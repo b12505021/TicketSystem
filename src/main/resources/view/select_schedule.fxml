@@ -1,14 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<!-- 匯入 JavaFX 控制元件與排版 -->
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="$CONTROLLER_NAME$"
-            prefHeight="400.0" prefWidth="600.0" >
+<!-- 使用 AnchorPane 作為根容器，並連結 Controller -->
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.ticketsystem.controller.SelectScheduleController"
+            prefWidth="400" prefHeight="400">
 
+    <!-- 垂直排列畫面元素 -->
+    <VBox alignment="CENTER" spacing="10"
+          AnchorPane.topAnchor="30.0"
+          AnchorPane.leftAnchor="50.0"
+          AnchorPane.rightAnchor="50.0"
+          AnchorPane.bottomAnchor="30.0">
+
+        <!-- 標題 -->
+        <Label text="選擇電影場次" style="-fx-font-size: 16px;" />
+
+        <!-- 顯示所有可選的場次 -->
+        <ListView fx:id="scheduleList" prefHeight="200"/>
+
+        <!-- 使用者點擊後前往選擇座位 -->
+        <Button text="前往選位" onAction="#goToBooking"/>
+
+        <!-- 顯示錯誤或提示訊息 -->
+        <Label fx:id="messageLabel" textFill="red"/>
+
+        <!-- 返回主畫面 -->
+        <Button text="返回主選單" onAction="#goBack"/>
+
+    </VBox>
 </AnchorPane>

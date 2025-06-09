@@ -1,14 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<!-- 匯入所需的 JavaFX 類別 -->
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="$CONTROLLER_NAME$"
-            prefHeight="400.0" prefWidth="600.0" >
+<!-- AnchorPane 為最外層容器，繫結控制器 MovieListController -->
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.ticketsystem.controller.MovieListController"
+            prefWidth="400" prefHeight="400">
 
+    <!-- BorderPane 作為主結構，便於區塊劃分（上、下、左、右、中） -->
+    <BorderPane AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+
+        <!-- 上方區塊（top）：右上角放置 "我要訂票" 按鈕 -->
+        <top>
+            <HBox alignment="TOP_RIGHT" spacing="10">
+                <padding>
+                    <Insets top="10" right="10" bottom="10" left="10"/>
+                </padding>
+                <!-- 觸發 goToBooking 方法，導向選場次畫面 -->
+                <Button text="🎫 我要訂票" onAction="#goToBooking" />
+            </HBox>
+        </top>
+
+        <!-- 中央區塊（center）：顯示電影清單與返回主選單 -->
+        <center>
+            <VBox alignment="CENTER" spacing="10.0">
+                <!-- 標題文字 -->
+                <Label text="正在上映" style="-fx-font-size: 16px;" />
+                <padding>
+                    <Insets top="20" right="20" bottom="20" left="20"/>
+                </padding>
+                <!-- 顯示所有電影的 ListView，由 Controller 載入資料 -->
+                <ListView fx:id="movieList" prefHeight="300" maxWidth="350"/>
+                <!-- 返回主選單按鈕，觸發 goBack 方法 -->
+                <Button text="返回主選單" onAction="#goBack" maxWidth="150"/>
+            </VBox>
+        </center>
+    </BorderPane>
 </AnchorPane>

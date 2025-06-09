@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 匯入所需的 JavaFX 元件與資料結構 -->
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+
+<!-- 根節點為 AnchorPane，控制整體畫面布局 -->
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.ticketsystem.controller.AddMovieController"
+            prefWidth="400" prefHeight="400">
+
+    <children>
+        <!-- 使用 VBox 垂直排列所有元件，並置中對齊 -->
+        <VBox alignment="CENTER" spacing="10.0" layoutX="50" layoutY="30" prefWidth="300">
+
+            <!-- 標題文字 -->
+            <Label text="新增電影" style="-fx-font-size: 16px;" />
+
+            <!-- 輸入電影名稱 -->
+            <TextField fx:id="nameField" promptText="電影名稱"/>
+
+            <!-- 輸入電影片長（以分鐘為單位） -->
+            <TextField fx:id="durationField" promptText="片長（分鐘）"/>
+
+            <!-- 輸入電影簡介，多行文字 -->
+            <TextArea fx:id="descriptionArea" promptText="簡介" prefRowCount="4"/>
+
+            <!-- 選擇電影分級 -->
+            <ComboBox fx:id="ratingBox">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="普遍級"/>
+                        <String fx:value="保護級"/>
+                        <String fx:value="輔12級"/>
+                        <String fx:value="輔15級"/>
+                        <String fx:value="限制級"/>
+                    </FXCollections>
+                </items>
+            </ComboBox>
+
+            <!-- 點擊送出新增電影 -->
+            <Button text="送出" onAction="#handleSubmit"/>
+
+            <!-- 顯示錯誤或成功訊息 -->
+            <Label fx:id="messageLabel" textFill="green"/>
+
+            <!-- 返回後台管理頁面 -->
+            <Button text="返回後台" onAction="#goBack"/>
+        </VBox>
+    </children>
+</AnchorPane>

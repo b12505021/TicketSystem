@@ -1,14 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<!-- 匯入 JavaFX 控制元件與佈局 -->
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="$CONTROLLER_NAME$"
-            prefHeight="400.0" prefWidth="600.0" >
+<!-- 使用 AnchorPane 作為根節點，控制器為 DeleteDataController -->
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.ticketsystem.controller.DeleteDataController"
+            prefWidth="450" prefHeight="400">
 
+    <!-- TabPane 提供「刪除電影」與「刪除場次」兩個分頁 -->
+    <TabPane
+            AnchorPane.topAnchor="20.0"
+            AnchorPane.leftAnchor="20.0"
+            AnchorPane.rightAnchor="20.0"
+            AnchorPane.bottomAnchor="60.0">
+
+        <tabs>
+            <!-- 第一個分頁：刪除電影 -->
+            <Tab text="刪除電影">
+                <VBox spacing="10" alignment="CENTER">
+                    <padding>
+                        <Insets top="10" bottom="10" left="10" right="10"/>
+                    </padding>
+
+                    <!-- 顯示所有電影，供使用者選取刪除 -->
+                    <ListView fx:id="movieList" prefHeight="250"/>
+                    <Button text="刪除選取電影" onAction="#deleteSelectedMovie"/>
+                </VBox>
+            </Tab>
+
+            <!-- 第二個分頁：刪除場次 -->
+            <Tab text="刪除場次">
+                <VBox spacing="10" alignment="CENTER">
+                    <padding>
+                        <Insets top="10" bottom="10" left="10" right="10"/>
+                    </padding>
+
+                    <!-- 顯示所有場次，供使用者選取刪除 -->
+                    <ListView fx:id="scheduleList" prefHeight="250"/>
+                    <Button text="刪除選取場次" onAction="#deleteSelectedSchedule"/>
+                </VBox>
+            </Tab>
+        </tabs>
+    </TabPane>
+
+    <!-- 返回按鈕：導回 admin_menu.fxml -->
+    <Button text="返回" onAction="#goBack"
+            AnchorPane.bottomAnchor="10.0"
+            AnchorPane.leftAnchor="175.0"/>
 </AnchorPane>

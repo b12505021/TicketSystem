@@ -1,14 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
+<!-- 匯入必要的 JavaFX 控制元件與排版容器 -->
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="$CONTROLLER_NAME$"
-            prefHeight="400.0" prefWidth="600.0" >
+<!-- AnchorPane 為根節點，並指定 BookingController 為控制器 -->
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.ticketsystem.controller.BookingController"
+            prefWidth="1000" prefHeight="700">
 
+    <!-- 使用 VBox 垂直排列內容，置中對齊，並設置上下左右邊界間距 -->
+    <VBox alignment="CENTER" spacing="10"
+          AnchorPane.topAnchor="30.0"
+          AnchorPane.leftAnchor="50.0"
+          AnchorPane.rightAnchor="50.0"
+          AnchorPane.bottomAnchor="30.0">
+
+        <!-- 顯示目前場次資訊（如：小廳（場次ID 1）） -->
+        <Label fx:id="titleLabel" style="-fx-font-size: 16px;" />
+
+        <!-- 座位選擇區（GridPane 會動態產生座位按鈕） -->
+        <!-- alignment="CENTER" 讓座位區置中對齊 -->
+        <GridPane fx:id="seatGrid" hgap="5" vgap="5" alignment="CENTER"/>
+
+        <!-- 送出訂票按鈕，觸發 handleSubmit() -->
+        <Button text="送出訂票" onAction="#handleSubmit"/>
+
+        <!-- 訊息標籤，顯示成功/失敗等訊息 -->
+        <Label fx:id="messageLabel" textFill="green"/>
+
+        <!-- 返回按鈕，觸發 goBack() 返回上一頁 -->
+        <Button text="返回" onAction="#goBack"/>
+    </VBox>
 </AnchorPane>

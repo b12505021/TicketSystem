@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 匯入必要的 JavaFX 控制元件與容器 -->
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<!-- 使用 AnchorPane 為根節點，綁定 AdminMenuController 作為控制器 -->
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.ticketsystem.controller.AdminMenuController"
+            prefWidth="400" prefHeight="300">
+
+    <!-- 使用 VBox 讓所有元件垂直排列，並加入邊界綁定與間距 -->
+    <VBox alignment="CENTER" spacing="15.0"
+          AnchorPane.topAnchor="30.0"
+          AnchorPane.leftAnchor="50.0"
+          AnchorPane.rightAnchor="50.0"
+          AnchorPane.bottomAnchor="30.0">
+
+        <!-- 歡迎標籤（顯示目前登入的管理員 Email） -->
+        <Label fx:id="welcomeLabel" style="-fx-font-size: 16px;" />
+
+        <!-- 按鈕：導向新增電影畫面 -->
+        <Button text="🎥 上架電影（新增 Movie）" onAction="#handleAddMovie" />
+
+        <!-- 按鈕：導向刪除電影與場次畫面 -->
+        <Button text="🗑️ 下架電影（刪除 Movie）" onAction="#handleDeleteData" />
+
+        <!-- 按鈕：導向新增場次畫面 -->
+        <Button text="🕒 新增場次（新增 Schedule）" onAction="#handleAddSchedule"/>
+
+        <!-- 按鈕：導向查詢某場次所有訂票記錄畫面 -->
+        <Button text="查詢場次訂票" onAction="#handleViewScheduleBookings" maxWidth="150"/>
+
+        <!-- 登出按鈕：返回登入畫面 -->
+        <Button text="⬅️ 登出" onAction="#handleLogout"/>
+    </VBox>
+</AnchorPane>

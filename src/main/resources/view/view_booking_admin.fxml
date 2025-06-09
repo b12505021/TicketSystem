@@ -1,14 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<!-- 匯入 JavaFX 元件 -->
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<!-- 使用 AnchorPane 為根容器，並指定對應的 Controller -->
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="$CONTROLLER_NAME$"
-            prefHeight="400.0" prefWidth="600.0" >
+            fx:controller="com.example.ticketsystem.controller.ViewBookingAdminController"
+            prefHeight="400.0" prefWidth="600.0">
 
+    <!-- VBox 作為畫面主體，垂直排列所有元件 -->
+    <VBox spacing="10" alignment="CENTER"
+          AnchorPane.topAnchor="20.0"
+          AnchorPane.leftAnchor="20.0"
+          AnchorPane.rightAnchor="20.0"
+          AnchorPane.bottomAnchor="20.0">
+
+        <!-- 標題 -->
+        <Label text="輸入場次 ID 查詢訂票紀錄" />
+
+        <!-- 輸入場次 ID -->
+        <TextField fx:id="scheduleField" promptText="輸入 Schedule ID"/>
+
+        <!-- 查詢按鈕，觸發 Controller 的 handleQuery() 方法 -->
+        <Button text="查詢" onAction="#handleQuery"/>
+
+        <!-- 顯示查詢結果的 ListView -->
+        <ListView fx:id="resultList" prefHeight="300"/>
+
+        <!-- 返回按鈕，觸發 goBack() 方法 -->
+        <Button text="返回" onAction="#goBack"/>
+    </VBox>
 </AnchorPane>

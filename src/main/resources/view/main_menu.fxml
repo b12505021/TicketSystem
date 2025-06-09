@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 匯入所需的 JavaFX 控制項與佈局類別 -->
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<!-- 根節點 AnchorPane，綁定控制器 MainMenuController -->
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.ticketsystem.controller.MainMenuController"
+            prefWidth="400" prefHeight="300">
+
+    <!-- VBox 用於垂直排列所有元件，並設定對齊方式與元件間間距 -->
+    <VBox alignment="CENTER" spacing="15.0"
+          AnchorPane.topAnchor="30.0"
+          AnchorPane.leftAnchor="50.0"
+          AnchorPane.rightAnchor="50.0"
+          AnchorPane.bottomAnchor="30.0">
+
+        <!-- 歡迎標籤，會顯示登入者帳號 -->
+        <Label fx:id="welcomeLabel" style="-fx-font-size: 16px;" />
+
+        <!-- 查詢電影按鈕，觸發 handleViewMovies 方法 -->
+        <Button text="🎬 查詢電影" onAction="#handleViewMovies"/>
+
+        <!-- 開始訂票按鈕，觸發 handleStartBooking 方法 -->
+        <Button text="🎫 開始訂票" onAction="#handleStartBooking"/>
+
+        <!-- 訂票紀錄按鈕，觸發 handleViewBookings 方法 -->
+        <Button text="📜 訂票紀錄" onAction="#handleViewBookings"/>
+
+        <!-- 登出按鈕，觸發 handleLogout 方法 -->
+        <Button text="⬅️ 登出" onAction="#handleLogout"/>
+
+    </VBox>
+</AnchorPane>

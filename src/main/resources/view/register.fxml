@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 匯入所需 JavaFX 類別 -->
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<!-- 最外層 AnchorPane 並指定對應 Controller -->
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.ticketsystem.controller.RegisterController"
+            prefWidth="400" prefHeight="300">
+
+    <!-- 垂直排列所有註冊項目，間距為 10 -->
+    <VBox alignment="CENTER" spacing="10.0"
+          AnchorPane.topAnchor="20.0"
+          AnchorPane.leftAnchor="50.0"
+          AnchorPane.rightAnchor="50.0"
+          AnchorPane.bottomAnchor="20.0">
+
+        <!-- 標題 -->
+        <Label text="Register New Account" style="-fx-font-size: 16px;" />
+
+        <!-- 使用者輸入 Email -->
+        <TextField fx:id="emailField" promptText="Email" />
+
+        <!-- 使用者輸入密碼 -->
+        <PasswordField fx:id="passwordField" promptText="Password" />
+
+        <!-- 使用者輸入生日，格式為 yyyy-MM-dd -->
+        <TextField fx:id="birthField" promptText="Birthdate (YYYY-MM-DD)" />
+
+        <!-- 點擊註冊，觸發 handleRegister 方法 -->
+        <Button text="Register" onAction="#handleRegister"/>
+
+        <!-- 返回登入頁面 -->
+        <Button text="Back to Login" onAction="#goToLogin"/>
+
+        <!-- 錯誤訊息顯示區 -->
+        <Label fx:id="messageLabel" textFill="red"/>
+
+    </VBox>
+</AnchorPane>

@@ -1,14 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<!-- 匯入必要的 JavaFX 元件與型別 -->
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.Integer?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="$CONTROLLER_NAME$"
-            prefHeight="400.0" prefWidth="600.0" >
+<!-- 使用 AnchorPane 作為根節點，並綁定對應的控制器 AddScheduleController -->
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.ticketsystem.controller.AddScheduleController"
+            prefWidth="400" prefHeight="420">
 
+    <!-- 使用 VBox 垂直排列元件並設定間距與邊界 -->
+    <VBox alignment="CENTER" spacing="10.0"
+          AnchorPane.topAnchor="30.0"
+          AnchorPane.leftAnchor="50.0"
+          AnchorPane.rightAnchor="50.0"
+          AnchorPane.bottomAnchor="30.0">
+
+        <!-- 設定內邊距 -->
+        <padding>
+            <Insets top="10" bottom="10" left="10" right="10"/>
+        </padding>
+
+        <!-- 表單標題 -->
+        <Label text="新增場次" style="-fx-font-size: 16px;" />
+
+        <!-- 下拉式選單：選擇電影 -->
+        <ComboBox fx:id="movieBox" promptText="選擇電影"/>
+
+        <!-- 下拉式選單：選擇放映廳（1~10），系統根據偶數/奇數自動顯示大廳/小廳 -->
+        <ComboBox fx:id="hallBox" promptText="選擇放映廳（1~10）">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <Integer fx:value="1"/>
+                    <Integer fx:value="2"/>
+                    <Integer fx:value="3"/>
+                    <Integer fx:value="4"/>
+                    <Integer fx:value="5"/>
+                    <Integer fx:value="6"/>
+                    <Integer fx:value="7"/>
+                    <Integer fx:value="8"/>
+                    <Integer fx:value="9"/>
+                    <Integer fx:value="10"/>
+                </FXCollections>
+            </items>
+        </ComboBox>
+
+        <!-- 根據所選放映廳自動顯示廳型（小廳 / 大廳） -->
+        <Label fx:id="hallTypeLabel" text="請選擇放映廳，系統會自動判斷廳型"/>
+
+        <!-- 輸入放映時間，格式為 yyyy-MM-dd HH:mm -->
+        <TextField fx:id="datetimeField" promptText="放映時間 (yyyy-MM-dd HH:mm)"/>
+
+        <!-- 提交按鈕：送出新增場次 -->
+        <Button text="送出" onAction="#handleSubmit"/>
+
+        <!-- 訊息標籤：顯示成功或錯誤提示 -->
+        <Label fx:id="messageLabel" textFill="green"/>
+
+        <!-- 返回按鈕：返回管理後台 -->
+        <Button text="返回後台" onAction="#goBack"/>
+
+    </VBox>
 </AnchorPane>

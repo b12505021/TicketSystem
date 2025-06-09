@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 匯入 JavaFX 控制元件與佈局 -->
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<!-- AnchorPane 為根節點，並綁定控制器 LoginController -->
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.ticketsystem.controller.LoginController"
+            prefWidth="400" prefHeight="250">
+
+    <!-- VBox 垂直排列所有元件，並設定上下左右邊界與元件間距 -->
+    <VBox alignment="CENTER" spacing="10.0"
+          AnchorPane.topAnchor="30.0"
+          AnchorPane.leftAnchor="50.0"
+          AnchorPane.rightAnchor="50.0"
+          AnchorPane.bottomAnchor="20.0">
+
+        <!-- 標題文字 -->
+        <Label text="Login to Movie System" style="-fx-font-size: 16px;" />
+
+        <!-- 輸入帳號：Email -->
+        <TextField fx:id="emailField" promptText="Email" />
+
+        <!-- 輸入密碼 -->
+        <PasswordField fx:id="passwordField" promptText="Password" />
+
+        <!-- 登入按鈕，綁定控制器 handleLogin 方法 -->
+        <Button text="Login" onAction="#handleLogin"/>
+
+        <!-- 前往註冊按鈕，綁定控制器 goToRegister 方法 -->
+        <Button text="Register" onAction="#goToRegister"/>
+
+        <!-- 錯誤或提示訊息 -->
+        <Label fx:id="messageLabel" textFill="red"/>
+
+    </VBox>
+</AnchorPane>
